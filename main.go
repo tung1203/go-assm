@@ -1,7 +1,6 @@
 package main
 
 import (
-	"os"
 	"quizz/controllers"
 
 	"github.com/gin-gonic/gin"
@@ -15,7 +14,7 @@ func main() {
 	controllers.SetupCategoryRouter(r)
 	controllers.SetupTopicRouter(r)
 
-	port := os.Getenv("PORT")
-
-	r.Run(":" + port)
+	// port := os.Getenv("PORT")
+	// r.Run(":" + port)
+	r.Run(":8080")
 }
