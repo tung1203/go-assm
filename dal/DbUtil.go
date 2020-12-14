@@ -2,6 +2,7 @@ package dal
 
 import (
 	"fmt"
+	"os"
 	"quizz/model"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -14,12 +15,12 @@ var db *gorm.DB
 
 //InitializeMySQL to OrderDB
 func InitializeMySQL() {
-	// dsn := os.Getenv("DATABASE_URL")
+	dsn := os.Getenv("DATABASE_URL")
 	// dBConnection, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	// if err != nil {
 	// 	log.Fatalf("Error opening database: %q", err)
 	// }
-	dsn := "root:tung1203@tcp(127.0.0.1:3306)/quizz?charset=utf8mb4&parseTime=True&loc=Local"
+	// dsn := "root:tung1203@tcp(127.0.0.1:3306)/quizz?charset=utf8mb4&parseTime=True&loc=Local"
 	dBConnection, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
