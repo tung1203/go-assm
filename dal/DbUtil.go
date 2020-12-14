@@ -21,7 +21,7 @@ func InitializeMySQL() {
 	// 	log.Fatalf("Error opening database: %q", err)
 	// }
 	// dsn := "root:tung1203@tcp(127.0.0.1:3306)/quizz?charset=utf8mb4&parseTime=True&loc=Local"
-	dsn := "ow6qah1qqqgfqs80:ap6rwhsic4485plq@klbcedmmqp7w17ik.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/l4xcudjgm2tc5qlq?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "ow6qah1qqqgfqs80:ap6rwhsic4485plq@tcp(klbcedmmqp7w17ik.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306)/l4xcudjgm2tc5qlq?charset=utf8mb4&parseTime=True&loc=Local"
 	dBConnection, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
