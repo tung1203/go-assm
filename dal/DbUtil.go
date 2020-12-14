@@ -16,6 +16,7 @@ var db *gorm.DB
 //InitializeMySQL to OrderDB
 func InitializeMySQL() {
 	dsn := os.Getenv("DATABASE_URL")
+	println(dsn)
 	// dBConnection, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	// if err != nil {
 	// 	log.Fatalf("Error opening database: %q", err)
