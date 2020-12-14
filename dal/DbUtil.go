@@ -15,7 +15,7 @@ var db *gorm.DB
 
 //InitializeMySQL to OrderDB
 func InitializeMySQL() {
-	dsn := os.Getenv("CLEARDB_DATABASE_URL")
+	dsn := os.Getenv("JAWSDB_MARIA_URL")
 
 	// dBConnection, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	// if err != nil {
@@ -33,6 +33,7 @@ func InitializeMySQL() {
 	db.AutoMigrate(&model.Category{}, &model.Topic{}, &model.Question{}, &model.Answer{})
 }
 
+// mysql -h klbcedmmqp7w17ik.cbetxkdyhwsb.us-east-1.rds.amazonaws.com -u ow6qah1qqqgfqs80 -p l4xcudjgm2tc5qlq < db.sql
 //GetConnection is get MySQL Connection
 func GetConnection() *gorm.DB {
 	if db == nil {
