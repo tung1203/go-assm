@@ -15,12 +15,13 @@ func SetupUserRouter(r *gin.Engine) {
 	r.POST("/login", func(c *gin.Context) {
 		var user model.User
 		if err := c.ShouldBindJSON(&user); err == nil {
-			success, err, token := dal.Login(user)
+			success, err, token, id := dal.Login(user)
 			fmt.Println(user.Email)
 			if success == true {
 				c.JSON(200, gin.H{
 					"messages": err,
 					"token":    token,
+					"id":       id,
 				})
 			} else {
 				c.JSON(500, gin.H{

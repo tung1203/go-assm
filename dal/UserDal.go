@@ -47,7 +47,7 @@ func ValidateEmail(email string) bool {
 var signingKey, verificationKey []byte
 
 // Login login
-func Login(user model.User) (bool, string, string) {
+func Login(user model.User) (bool, string, string, uint) {
 	GetConnection()
 	var foundUser model.User
 	db.Where("email = ?", user.Email).First(&foundUser)
@@ -65,12 +65,12 @@ func Login(user model.User) (bool, string, string) {
 
 		tokenString, err := token.SignedString([]byte("tungdz"))
 		if err != nil {
-			return false, "Error signing token", ""
+			return false, "Error signing token", "", 0
 		}
 		foundUser.Password = ""
-		return true, "Unauthorized", tokenString
+		return true, "Unauthorized", tokenString, foundUser.ID
 	} else {
-		return false, "Unauthorized", ""
+		return false, "Unauthorized", "", 0
 	}
 }
 
